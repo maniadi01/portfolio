@@ -1,0 +1,26 @@
+name: Keep Supabase Awake
+
+# Supabase pauses free-tier projects after 7 days with no API requests.
+# This workflow sends a tiny read request twice a week so that never
+# happens. It costs nothing — GitHub Actions is free for this usage,
+# and the request below only ever reads one column of one row.
+#
+# SETUP: replace the two placeholder values below with the same
+# SUPABASE_URL and SUPABASE_ANON_KEY you put in js/config.js, then
+# commit this file. That's it — no GitHub secrets needed, since the
+# anon key is safe to expose publicly (see js/config.js for why).
+
+on:
+  schedule:
+    - cron: '0 6 * * 1,4' # Mondays and Thursdays at 06:00 UTC
+  workflow_dispatch: # lets you trigger it manually from the Actions tab
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase
+        run: |
+          curl -s -o /dev/null -w "Supabase responded: %{http_code}\n" \
+            "https://YOUR-PROJECT-REF.supabase.co/rest/v1/videos?select=id&limit=1" \
+            -H "apikey: YOUR-ANON-PUBLIC-KEY"

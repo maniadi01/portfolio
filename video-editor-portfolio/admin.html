@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Alex Rivera</title>
+<meta name="robots" content="noindex, nofollow">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230c0d0d'/%3E%3Cpath d='M38 28 L74 50 L38 72 Z' fill='%2356c7b8'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ LOGIN ============ -->
+<div class="admin-login" id="loginScreen">
+  <div class="hero__grain" aria-hidden="true" style="position:fixed;"></div>
+  <div class="admin-login__box">
+    <div class="brand"><span class="rec-dot" aria-hidden="true"></span>Alex Rivera</div>
+    <p class="hint">Sign in with the admin account created in Supabase → Authentication → Users.</p>
+    <form id="loginForm">
+      <div class="field">
+        <label for="loginEmail">Email</label>
+        <input type="email" id="loginEmail" required autocomplete="username">
+      </div>
+      <div class="field">
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" required autocomplete="current-password">
+      </div>
+      <div class="form-msg" id="loginError" role="alert"></div>
+      <button type="submit" class="btn btn-primary btn-block" id="loginSubmit">Sign In</button>
+    </form>
+  </div>
+</div>
+
+<!-- ============ DASHBOARD ============ -->
+<div class="admin-shell" id="adminShell">
+  <div class="container">
+    <div class="admin-header">
+      <div class="brand"><span class="rec-dot" aria-hidden="true"></span>Admin Dashboard</div>
+      <div style="display:flex; align-items:center; gap:20px;">
+        <span class="muted-small" id="loggedInAs"></span>
+        <a href="index.html" class="icon-btn" target="_blank" rel="noopener">View Site ↗</a>
+        <button class="icon-btn danger" id="signOutBtn" type="button">Sign Out</button>
+      </div>
+    </div>
+
+    <div class="admin-tabs" role="tablist">
+      <button class="admin-tab active" data-tab="add" role="tab" type="button">Add Video</button>
+      <button class="admin-tab" data-tab="manage" role="tab" type="button">Manage Videos</button>
+      <button class="admin-tab" data-tab="messages" role="tab" type="button">Messages<span class="badge" id="unreadBadge" style="display:none;">0</span></button>
+    </div>
+
+    <!-- ---- ADD / EDIT VIDEO ---- -->
+    <section class="admin-panel active" id="panel-add">
+      <div class="admin-card">
+        <h3 id="formTitle">Add a new video</h3>
+        <p class="card-desc">Paste a YouTube or Vimeo link — the thumbnail is pulled in automatically.</p>
+
+        <form id="videoForm">
+          <input type="hidden" id="vEditId" value="">
+          <div class="form-grid">
+            <div class="field full">
+              <label for="vUrl">YouTube or Vimeo URL</label>
+              <input type="text" id="vUrl" placeholder="<iframe width="393" height="698" src="https://www.youtube.com/embed/WzmK6Ni0mS8" title="0707 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>" required>
+              <span class="field-hint" id="vUrlStatus"></span>
+              <div class="thumb-preview" id="vThumbPreview"><span class="placeholder-text">Thumbnail preview</span></div>
+            </div>
+
+            <div class="field full">
+              <label for="vTitle">Title</label>
+              <input type="text" id="vTitle" placeholder="Midnight Run — Director's Cut" required>
+            </div>
+
+            <div class="field full">
+              <label for="vDescription">Description</label>
+              <textarea id="vDescription" placeholder="A short line about the project, the brief, or your role in it."></textarea>
+            </div>
+
+            <div class="field">
+              <label for="vCategory">Category</label>
+              <input type="text" id="vCategory" list="categorySuggestions" placeholder="Commercial" required>
+              <datalist id="categorySuggestions">
+                <option value="Commercial"></option>
+                <option value="Music Video"></option>
+                <option value="Short Film"></option>
+                <option value="Narrative"></option>
+                <option value="Documentary"></option>
+                <option value="Wedding"></option>
+                <option value="Corporate"></option>
+                <option value="Social Media"></option>
+              </datalist>
+            </div>
+
+            <div class="field">
+              <label for="vClient">Client (optional)</label>
+              <input type="text" id="vClient" placeholder="Studio or brand name">
+            </div>
+
+            <div class="field">
+              <label for="vYear">Year</label>
+              <input type="number" id="vYear" min="2000" max="2100">
+            </div>
+
+            <div class="field">
+              <label for="vOrder">Display order</label>
+              <input type="number" id="vOrder" value="0">
+              <span class="field-hint">Lower numbers show first. Ties break by newest.</span>
+            </div>
+
+            <div class="field full" style="display:flex; align-items:center; gap:10px; flex-direction:row;">
+              <input type="checkbox" id="vFeatured" style="width:auto;">
+              <label for="vFeatured" style="margin:0;">Feature this project (shows larger in the grid)</label>
+            </div>
+          </div>
+
+          <div class="form-msg" id="videoFormMsg" role="status" style="margin-top:20px;"></div>
+
+          <div style="display:flex; gap:12px; margin-top:24px;">
+            <button type="submit" class="btn btn-primary" id="videoFormSubmit">Add Video</button>
+            <button type="button" class="btn btn-ghost" id="videoFormCancel" style="display:none;">Cancel edit</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ---- MANAGE VIDEOS ---- -->
+    <section class="admin-panel" id="panel-manage">
+      <div class="admin-card">
+        <h3>Your videos</h3>
+        <p class="card-desc">Edit details, reorder, or remove a project from the site.</p>
+        <div class="table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr><th></th><th>Title</th><th>Client</th><th>Year</th><th>Order</th><th>Featured</th><th></th></tr>
+            </thead>
+            <tbody id="videosTableBody">
+              <tr class="empty-row"><td colspan="7">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- MESSAGES ---- -->
+    <section class="admin-panel" id="panel-messages">
+      <div class="admin-card">
+        <h3>Contact messages</h3>
+        <p class="card-desc">Submissions from your site's contact form. Click a row to read the full message.</p>
+        <div class="table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr><th>From</th><th>Message</th><th>Date</th><th></th></tr>
+            </thead>
+            <tbody id="messagesTableBody">
+              <tr class="empty-row"><td colspan="4">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+<script src="js/config.js" defer></script>
+<script src="js/admin.js" defer></script>
+</body>
+</html>

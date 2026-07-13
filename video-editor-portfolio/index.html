@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aditya Mani — Video Editor</title>
+<meta name="description" content="Video editing and color grading portfolio — commercial, narrative, and music-video work.">
+<meta name="theme-color" content="#0c0d0d">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Aditya Mani — Video Editor">
+<meta property="og:description" content="Selected cuts: commercial, narrative, and music-video work.">
+<meta property="og:type" content="website">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230c0d0d'/%3E%3Cpath d='M38 28 L74 50 L38 72 Z' fill='%2356c7b8'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<header class="navbar" id="navbar">
+  <div class="container">
+    <a href="#top" class="brand"><span class="rec-dot" aria-hidden="true"></span>Aditya Mani</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="nav-cta">Start a Project</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navMobile">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="nav-mobile" id="navMobile">
+  <a href="#work">Work</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero__bars hero__bars--top" aria-hidden="true"></div>
+    <div class="hero__bars hero__bars--bottom" aria-hidden="true"></div>
+    <div class="hero__grain" aria-hidden="true"></div>
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="hero__glow hero__glow--warm" aria-hidden="true"></div>
+
+    <div class="container">
+      <div class="hero__timecode">
+        <span class="dot" aria-hidden="true"></span>
+        <span id="heroTimecode">00:00:00:00</span>
+        <span>&mdash; SHOWREEL 2026</span>
+      </div>
+      <h1>The cut is the <em>story</em>.</h1>
+      <p class="hero__sub"><strong>Alex Rivera</strong> is a video editor and colorist crafting narrative, commercial, and music-video work — precise cuts, considered color, built to hold attention.</p>
+      <div class="hero__actions">
+        <a href="#work" class="btn btn-primary">View the Work</a>
+        <a href="#contact" class="btn btn-ghost">Start a Project</a>
+      </div>
+    </div>
+
+    <div class="hero__scroll" aria-hidden="true">
+      <span>Scroll</span>
+      <div class="hero__scroll-line"></div>
+    </div>
+  </section>
+
+  <div class="scrub" style="--scrub-pos:18%" aria-hidden="true"><div class="scrub__head"></div></div>
+
+  <!-- ============ WORK ============ -->
+  <section class="section" id="work">
+    <div class="container">
+      <div class="section-top">
+        <div>
+          <div class="eyebrow">Selected Cuts</div>
+          <h2 class="section-heading">Recent <em>work</em>.</h2>
+          <p class="section-note" style="margin-top:16px;">A mix of commercial, narrative, and music-video edits. Filter by category or scroll through everything.</p>
+        </div>
+        <div class="filters" id="filters" role="tablist" aria-label="Filter work by category"></div>
+      </div>
+
+      <div class="grid" id="videoGrid">
+        <!-- Skeleton loaders shown until Supabase responds -->
+        <div class="skeleton-card"><div class="card__thumb"></div><div class="skeleton-line"></div><div class="skeleton-line short"></div></div>
+        <div class="skeleton-card"><div class="card__thumb"></div><div class="skeleton-line"></div><div class="skeleton-line short"></div></div>
+        <div class="skeleton-card"><div class="card__thumb"></div><div class="skeleton-line"></div><div class="skeleton-line short"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="scrub" style="--scrub-pos:64%" aria-hidden="true"><div class="scrub__head"></div></div>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="about__grid">
+         <div class="about__portrait">
+          <span class="about__portrait-mark">Aditya Mani<br><img src="InShot_20250304_100919854.png" alt="Aditya Mani"></span>
+         </div>
+        <div>
+          <div class="eyebrow">The Editor</div>
+          <h2 class="section-heading" style="max-width:20ch;">Built in the <em>timeline</em>.</h2>
+          <p class="about__bio" style="margin-top:24px;">I'm <strong>Aditya Mani</strong>, a video editor based in Ujjain. Over the last 2 years I've cut everything from 30-second spots to festival shorts — always chasing the version of the edit that makes people forget they're watching an edit at all.</p>
+          <p class="about__bio">My process starts with story, not software: structure first, rhythm second, polish last. Every cut, transition, and grade is in service of holding attention and landing the feeling the footage was shot for.</p>
+
+          <div class="about__tools" aria-label="Tools and software">
+            <span class="tool-pill">Premiere Pro</span>
+            <span class="tool-pill">DaVinci Resolve</span>
+            <span class="tool-pill">After Effects</span>
+            <span class="tool-pill">Final Cut Pro</span>
+            <span class="tool-pill">Capcut</span>
+          </div>
+
+          <div class="stats">
+            <div class="stat"><b>50+</b><span>Projects Delivered</span></div>
+            <div class="stat"><b>3+</b><span>Companies Worked with</span></div>
+            <div class="stat"><b>2 Yrs</b><span>Behind the Timeline</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="scrub" style="--scrub-pos:40%" aria-hidden="true"><div class="scrub__head"></div></div>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="contact__grid">
+        <div>
+          <div class="eyebrow">Get In Touch</div>
+          <h2 class="section-heading">Let's cut something <em>together</em>.</h2>
+          <form class="contact__form" id="contactForm" style="margin-top:32px;">
+            <div class="field">
+              <label for="cName">Name</label>
+              <input type="text" id="cName" name="name" required autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="cEmail">Email</label>
+              <input type="email" id="cEmail" name="email" required autocomplete="email">
+            </div>
+            <div class="field">
+              <label for="cMessage">Project details</label>
+              <textarea id="cMessage" name="message" required placeholder="Timeline, footage length, deadline, vibe — whatever helps me picture the project."></textarea>
+            </div>
+            <div class="form-msg" id="formMsg" role="status"></div>
+            <button type="submit" class="btn btn-primary btn-block" id="formSubmit">Send Message</button>
+          </form>
+        </div>
+
+        <div class="contact__side">
+          <p class="contact__lead">Available for freelance<em>reply within 24 hours.</em></p>
+          <nav class="social-list" aria-label="Social links">
+            <a href="mailto:mani.adityaofficial@gmail.com">Email
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="https://vimeo.com/" target="_blank" rel="noopener">Vimeo
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="www.linkedin.com/in/maniadi/" target="_blank" rel="noopener">LinkedIn
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>&copy; <span id="year"></span> Aditya Mani. All rights reserved.</p>
+    <a href="#top" class="back-top">Back to top ↑</a>
+  </div>
+</footer>
+
+<!-- ============ VIDEO MODAL ============ -->
+<div class="modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Video player">
+  <div class="modal__frame">
+    <button class="modal__close" id="modalClose">
+      Close
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <iframe id="modalIframe" src="" title="Video player" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+<script src="js/config.js" defer></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>

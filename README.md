@@ -1,4 +1,4 @@
-# Alex Rivera — Video Editor Portfolio
+# Aditya Mani — Video Editor Portfolio
 
 A dark, cinematic portfolio site with a real database behind it. Add a
 video from an admin dashboard, paste a YouTube or Vimeo link, and it

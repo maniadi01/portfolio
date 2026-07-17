@@ -269,11 +269,20 @@ function initContactForm() {
     submitBtn.innerHTML = '<span class="spinner"></span> Sending…';
 
     try {
-      const { error } = await supabaseClient.from('messages').insert([{ name, email, message }]);
-      if (error) throw error;
-      msgEl.textContent = "Message sent — thanks! I'll reply within 48 hours.";
-      msgEl.classList.add('show', 'success');
-      form.reset();
+      const { error: emailError } = await supabaseClient.functions.invoke(
+  "send-contact-email",
+  {
+    body: {
+      name,
+      email,
+      message,
+    },
+  }
+);
+
+if (emailError) {
+  console.error("Email failed:", emailError);
+}
     } catch (err) {
       console.error(err);
       msgEl.textContent = 'Something went wrong sending that — please try again or email me directly.';

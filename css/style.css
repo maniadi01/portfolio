@@ -421,13 +421,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 .about__portrait-img{
     position:absolute;
-
-    left:52%;
-    bottom:-25px;
-
-    width:155%;
-    transform: translateX(145px) scale(1.05) rotate(-20deg);
-    object-fit:contain;
+    left:50%;
+    bottom:-20px;
+    width:135%;
+    transform:translateX(-50%) rotate(-10deg);
   
 }
 
